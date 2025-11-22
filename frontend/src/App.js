@@ -1,0 +1,18 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Portfolio from './pages/Portfolio';
+import { Toaster } from './components/ui/toaster';
+import './App.css';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Portfolio />} />
+      </Routes>
+      <Toaster />
+    </BrowserRouter>
+  );
+}
+
+export default App;
