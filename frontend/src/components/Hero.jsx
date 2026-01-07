@@ -4,7 +4,13 @@ import { Button } from './ui/button';
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
-  const roles = ['Full-Stack Developer', 'Data Science Enthusiast', 'Problem Solver', 'Tech Innovator'];
+  const roles = [
+    'Associate Salesforce Developer',
+    'Full-Stack Developer',
+    'CRM & Automation Enthusiast',
+    'Problem Solver',
+    'Tech Innovator'
+  ];
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -57,8 +63,9 @@ const Hero = () => {
                 </h2>
               </div>
               <p className="text-lg text-gray-400 max-w-2xl">
-                Computer Science Engineering student passionate about building scalable solutions.
-                Skilled in full-stack development, data science, and machine learning with 4+ internship experiences.
+                Associate Salesforce Developer at CRM Landing and Computer Science Engineering student.
+                Passionate about Salesforce CRM customization, Apex development, Lightning Web Components,
+                and building scalable full-stack solutions with real-world impact.
               </p>
             </div>
 
@@ -76,7 +83,7 @@ const Hero = () => {
                 className="border-teal-500 text-teal-400 hover:bg-teal-500 hover:text-black px-8 py-6 text-lg flex items-center"
               >
                 <a href="/Piyush_Singh_Resume.pdf" download="Piyush_Resume.pdf" className="flex items-center gap-2">
-                  <Download className="mr-2" size={20} />
+                  <Download size={20} />
                   Download Resume
                 </a>
               </Button>
