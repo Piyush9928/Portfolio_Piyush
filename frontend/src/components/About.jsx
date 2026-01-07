@@ -1,12 +1,15 @@
 import React from 'react';
-import { Code2, Database, Cpu, Award } from 'lucide-react';
+import { Code2, Database, Cpu, Award, Cloud } from 'lucide-react';
 import { Card } from './ui/card';
 import Piyush from "../assets/Piyush.jpg";
 
-
-
 const About = () => {
   const highlights = [
+    {
+      icon: <Cloud className="text-blue-400" size={32} />,
+      title: 'Salesforce Development',
+      description: 'Working with Apex, SOQL/SOSL, LWC, Flows, and CRM automation'
+    },
     {
       icon: <Code2 className="text-teal-400" size={32} />,
       title: 'Full-Stack Development',
@@ -14,18 +17,13 @@ const About = () => {
     },
     {
       icon: <Database className="text-teal-400" size={32} />,
-      title: 'Data Science',
-      description: 'Experienced in ML models, data analysis, and visualization'
+      title: 'Data & Backend Systems',
+      description: 'Experience with databases, APIs, and scalable backend services'
     },
     {
       icon: <Cpu className="text-orange-500" size={32} />,
       title: 'Problem Solving',
-      description: '100+ LeetCode problems solved, 5-star Python on HackerRank'
-    },
-    {
-      icon: <Award className="text-orange-500" size={32} />,
-      title: 'Hackathon Veteran',
-      description: 'NASA Space Apps, GDG Make & Break participant'
+      description: '100+ DSA problems solved, 5-star Python on HackerRank'
     }
   ];
 
@@ -55,18 +53,19 @@ const About = () => {
           {/* Right - Content */}
           <div className="space-y-6">
             <h3 className="text-3xl font-bold text-white">
-              Computer Science Engineering Student
+              Associate Salesforce Developer & Computer Science Engineering Student
             </h3>
+
             <p className="text-gray-400 text-lg leading-relaxed">
-              I'm Piyush Singh, a passionate Computer Science Engineering student at NIMS University Rajasthan
-              with a strong foundation in programming, data structures, and full-stack development. With hands-on
-              experience from 4 internships and 10+ technical projects, I specialize in building scalable web
-              applications and data-driven solutions.
+              I'm Piyush Singh, an Associate Salesforce Developer at CRM Landing and a Computer Science Engineering
+              student at NIMS University Rajasthan. I work on Salesforce CRM customization, Apex development,
+              Lightning Web Components (LWC), and automation to build scalable business solutions.
             </p>
+
             <p className="text-gray-400 text-lg leading-relaxed">
-              My expertise spans across Python, Java, C++, and modern web technologies including React, Django,
-              and the MERN stack. I'm driven by curiosity and a desire to solve real-world problems through
-              innovative technology solutions.
+              Alongside Salesforce, I have a strong foundation in full-stack development and backend systems,
+              with experience across Python, Java, C++, React, Django, and the MERN stack. With hands-on exposure
+              through internships and real-world projects, I focus on building reliable, data-driven applications.
             </p>
 
             {/* Quick Stats */}
@@ -76,7 +75,7 @@ const About = () => {
                 <div className="text-gray-400">Projects Completed</div>
               </div>
               <div className="bg-black p-4 rounded-lg border border-gray-800">
-                <div className="text-3xl font-bold text-teal-400">4</div>
+                <div className="text-3xl font-bold text-teal-400">4+</div>
                 <div className="text-gray-400">Internships</div>
               </div>
               <div className="bg-black p-4 rounded-lg border border-gray-800">
@@ -96,7 +95,7 @@ const About = () => {
           {highlights.map((item, index) => (
             <Card
               key={index}
-              className="bg-gradient-to-br from-gray-900 to-black border-gray-800 p-6 hover:border-teal-500 transition-all duration-300 hover:transform hover:scale-105"
+              className="bg-gradient-to-br from-gray-900 to-black border-gray-800 p-6 hover:border-teal-500 transition-all duration-300 hover:scale-105"
             >
               <div className="mb-4">{item.icon}</div>
               <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
