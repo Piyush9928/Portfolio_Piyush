@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from "lucide-react";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
@@ -8,6 +8,8 @@ import { Textarea } from "./ui/textarea";
 import { toast } from "../hooks/use-toast";
 
 const Contact = () => {
+  const formRef = useRef();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,7 +17,7 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.message) {
@@ -26,33 +28,30 @@ const Contact = () => {
       });
     }
 
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}status`,
-        {
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
+    emailjs
+      .sendForm(
+        "service_afv1cj7",   // e.g. service_xxxxx
+        "template_1gcu0zy",  // e.g. template_xxxxx
+        formRef.current,
+        "MFUgODjqa-aw-1dT0"    // e.g. xxxxxxxxx
+      )
+      .then(
+        () => {
+          toast({
+            title: "Message Sent 🚀",
+            description: "Thanks for reaching out! I will contact you soon.",
+          });
+          setFormData({ name: "", email: "", subject: "", message: "" });
+        },
+        (error) => {
+          console.error("EmailJS Error:", error);
+          toast({
+            title: "Send Failed",
+            description: "Something went wrong. Please try again later.",
+            variant: "destructive",
+          });
         }
       );
-
-      console.log("✔️ Data Sent:", response.data);
-
-      toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out! I will contact you soon.",
-      });
-
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch (error) {
-      console.error("❌ Error sending data:", error);
-      toast({
-        title: "Send Failed",
-        description: "Something went wrong. Try again later.",
-        variant: "destructive",
-      });
-    }
   };
 
   const handleChange = (e) => {
@@ -90,19 +89,21 @@ const Contact = () => {
           </h2>
           <div className="w-28 h-1 mx-auto bg-gradient-to-r from-emerald-500 to-cyan-400 mb-6"></div>
           <p className="text-gray-400 text-lg max-w-xl mx-auto">
-            Have a project? Looking to collaborate? Or just want to say hi? Drop me a message.
+            Have a project, collaboration idea, or opportunity? Drop me a message.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Contact Info */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-semibold text-white mb-4">Contact Information</h3>
+            <h3 className="text-2xl font-semibold text-white mb-4">
+              Contact Information
+            </h3>
 
             {contactInfo.map((item, index) => (
               <Card
                 key={index}
-                className="flex items-center gap-4 bg-slate-800 border border-slate-700 p-5 hover:border-emerald-500 transition-all duration-300"
+                className="flex items-center gap-4 bg-slate-800 border border-slate-700 p-5 hover:border-emerald-500 transition-all"
               >
                 {item.link ? (
                   <a href={item.link} className="flex items-center gap-4">
@@ -146,7 +147,7 @@ const Contact = () => {
 
           {/* Form */}
           <Card className="bg-slate-800 border border-slate-700 p-8 shadow-xl shadow-emerald-500/10">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <Input
                 name="name"
                 placeholder="Your Name *"
