@@ -61,7 +61,11 @@ const Skills = () => {
     { name: 'Bootstrap', color: 'orange' },
     { name: 'Tkinter', color: 'teal' },
     { name: 'Qt', color: 'orange' },
-    { name: 'Azure', color: 'teal' }
+    { name: 'Azure', color: 'teal' },
+    { name: 'Apex', color: 'orange' },
+    { name: 'SOQL', color: 'teal' },
+     { name: 'SOSL', color: 'orange' },
+    { name: 'Lightning', color: 'teal' }
   ];
 
   const getColorClass = (color) => {
